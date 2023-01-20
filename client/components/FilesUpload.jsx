@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ImagesWindow from "./ImagesWindow.jsx";
+import { setTitle, setImageName } from "../redux/uploadReducer.js";
 
 const filesUpload = (props) => {
   const projects = useSelector((state) => state.projects.projects);
-  const [formState, setFormState] = useState({
-    title: projects[0],
-    image: "front-image",
-    file: null,
-  });
+  const form = useSelector((state) => state.upload);
+  const [file, setFile] = useState();
 
   const titles = projects.map((p, i) => {
     if (i === 0)
       return (
-        <option key={i + p.title} selected value={p.title}>
+        <option key={i + p.title} selected value={i}>
           {p.title}
         </option>
       );
     else
       return (
-        <option key={i + p.title} value={p.title}>
+        <option key={i + p.title} value={i}>
           {p.title}
         </option>
       );
@@ -26,40 +25,50 @@ const filesUpload = (props) => {
 
   const sendFile = (data) => {
     const formData = new FormData();
-    formData.append(`${data.tite}/${data.image}`, data.file);
-    console.log(formData);
+    formData.append(`file`, file);
+
     fetch(
-      `http://localhost:3000/project/file?title=${data.title}&image=${data.image}`,
+      `http://localhost:3000/project/file?title=${form.title}&&image=${form.imageName}&&projectId=${form.projectId}`,
       {
         method: "POST",
         mode: "cors",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
         body: formData,
       }
     )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    dispatch(setTitle("test"));
+  };
 
   return (
-    <div>
+    <div className="upload-container">
+      <ImagesWindow id={form.projectId} title={form.title} />
       <select
         key="select1"
-        onChange={(e) => setFormState({ ...formState, title: e.target.value })}
         class="form-select"
         aria-label="Default select example"
+        onChange={(e) =>
+          dispatch(
+            setTitle({
+              id: projects[e.target.value].id,
+              title: projects[e.target.value].title,
+            })
+          )
+        }
       >
         {titles}
       </select>
       <select
         key="select2"
-        onChange={(e) => setFormState({ ...formState, image: e.target.value })}
+        onChange={(e) => dispatch(setImageName(e.target.value))}
         class="form-select"
         aria-label="Default select example"
       >
-        <option key="frontImage" selected value="front-image">
+        <option key="frontImage" selected value="frontImage">
           front image
         </option>
         <option key="image1" value="image1">
@@ -77,16 +86,14 @@ const filesUpload = (props) => {
       </select>
       <div class="input-group mb-3">
         <input
-          onChange={(e) =>
-            setFormState({ ...formState, file: e.target.files[0] })
-          }
+          onChange={(e) => setFile(e.target.files[0])}
           type="file"
           class="form-control"
           id="input-file"
         />
       </div>
       <button
-        onClick={() => sendFile(formState)}
+        onClick={() => sendFile(form)}
         type="button"
         class="btn btn-primary"
       >

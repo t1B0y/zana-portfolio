@@ -1,0 +1,25 @@
+"filename", "language", "HTML", "JavaScript", "CSS", "JavaScript React", "JSON", "Properties", "comment", "blank", "total"
+"/Users/patrice/Documents/webDev/solo-project/.env", "Properties", 0, 0, 0, 0, 0, 1, 0, 0, 1
+"/Users/patrice/Documents/webDev/solo-project/build/bundle.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 2, 2
+"/Users/patrice/Documents/webDev/solo-project/build/bundle.js", "JavaScript", 0, 1, 0, 0, 0, 0, 1, 0, 2
+"/Users/patrice/Documents/webDev/solo-project/build/index.html", "HTML", 13, 0, 0, 0, 0, 0, 0, 1, 14
+"/Users/patrice/Documents/webDev/solo-project/client/App.jsx", "JavaScript React", 0, 0, 0, 25, 0, 0, 0, 4, 29
+"/Users/patrice/Documents/webDev/solo-project/client/components/AccordeonProject.jsx", "JavaScript React", 0, 0, 0, 33, 0, 0, 0, 4, 37
+"/Users/patrice/Documents/webDev/solo-project/client/components/EditProjects.jsx", "JavaScript React", 0, 0, 0, 38, 0, 0, 0, 4, 42
+"/Users/patrice/Documents/webDev/solo-project/client/components/FilesUpload.jsx", "JavaScript React", 0, 0, 0, 99, 0, 0, 0, 8, 107
+"/Users/patrice/Documents/webDev/solo-project/client/components/Form.jsx", "JavaScript React", 0, 0, 0, 147, 0, 0, 0, 9, 156
+"/Users/patrice/Documents/webDev/solo-project/client/components/ImagesWindow.jsx", "JavaScript React", 0, 0, 0, 52, 0, 0, 0, 4, 56
+"/Users/patrice/Documents/webDev/solo-project/client/index.js", "JavaScript", 0, 13, 0, 0, 0, 0, 0, 2, 15
+"/Users/patrice/Documents/webDev/solo-project/client/redux/reducer.js", "JavaScript", 0, 28, 0, 0, 0, 0, 0, 4, 32
+"/Users/patrice/Documents/webDev/solo-project/client/redux/store.js", "JavaScript", 0, 9, 0, 0, 0, 0, 0, 2, 11
+"/Users/patrice/Documents/webDev/solo-project/client/redux/uploadReducer.js", "JavaScript", 0, 22, 0, 0, 0, 0, 0, 3, 25
+"/Users/patrice/Documents/webDev/solo-project/index.html", "HTML", 22, 0, 0, 0, 0, 0, 0, 2, 24
+"/Users/patrice/Documents/webDev/solo-project/package-lock.json", "JSON", 0, 0, 0, 0, 16425, 0, 0, 1, 16426
+"/Users/patrice/Documents/webDev/solo-project/package.json", "JSON", 0, 0, 0, 0, 54, 0, 0, 1, 55
+"/Users/patrice/Documents/webDev/solo-project/server/controllers/projectsControllers.js", "JavaScript", 0, 219, 0, 0, 0, 0, 0, 13, 232
+"/Users/patrice/Documents/webDev/solo-project/server/models/project.js", "JavaScript", 0, 11, 0, 0, 0, 0, 4, 4, 19
+"/Users/patrice/Documents/webDev/solo-project/server/server.js", "JavaScript", 0, 68, 0, 0, 0, 0, 0, 14, 82
+"/Users/patrice/Documents/webDev/solo-project/server/validation.js", "JavaScript", 0, 12, 0, 0, 0, 0, 1, 2, 15
+"/Users/patrice/Documents/webDev/solo-project/styles.css", "CSS", 0, 0, 29, 0, 0, 0, 0, 6, 35
+"/Users/patrice/Documents/webDev/solo-project/webpack.config.js", "JavaScript", 0, 67, 0, 0, 0, 0, 4, 3, 74
+"Total", "-", 35, 450, 29, 394, 16479, 1, 10, 93, 17491

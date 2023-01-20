@@ -37,8 +37,8 @@ const Form = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const sendDelete = (projectTitle) => {
-    fetch(`http://localhost:3000/${projectTitle}`, {
+  const sendDelete = (projectId) => {
+    fetch(`http://localhost:3000/${projectId}`, {
       method: "DELETE",
       mode: "cors",
       headers: {
@@ -63,7 +63,7 @@ const Form = (props) => {
   };
 
   return (
-    <form>
+    <form className="addform-container">
       <div className="mb-3">
         <label htmlFor="title" className="form-label">
           Title
@@ -141,7 +141,7 @@ const Form = (props) => {
       </button>
       {!props.addForm && (
         <button
-          onClick={() => sendDelete(project.title)}
+          onClick={() => sendDelete(project.id)}
           type="button"
           class="btn btn-danger"
         >

@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import projectReducer from "./reducer";
+import projects from "./reducer";
+import upload from "./uploadReducer";
 
 export const store = configureStore({
   reducer: {
-    projects: projectReducer,
+    upload,
+    projects,
   },
 });

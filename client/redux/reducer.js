@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   projects: [],
@@ -27,5 +27,5 @@ const projectSlice = createSlice({
     },
   },
 });
-export const { editProject } = projectSlice.actions;
+export const { editProject, selectForUpload, addFile } = projectSlice.actions;
 export default projectSlice.reducer;
