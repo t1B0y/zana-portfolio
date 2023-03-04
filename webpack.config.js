@@ -10,8 +10,9 @@ module.exports = {
   entry: path.resolve(__dirname, "./client/index.js"),
 
   output: {
-    path: path.resolve(__dirname, "./build"),
+    path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -57,10 +58,7 @@ module.exports = {
       directory: path.resolve(__dirname, "./build"),
       publicPath: "/",
     },
-    proxy: {
-      "/api": "http://localhost:3000",
-      router: () => "http://localhost:5000",
-    },
+    historyApiFallback: true,
     port: 8080,
   },
   plugins: [

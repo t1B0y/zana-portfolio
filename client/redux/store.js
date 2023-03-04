@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import projects from "./reducer";
-import upload from "./uploadReducer";
+import { configureStore } from '@reduxjs/toolkit';
+import projects from './projectsSlice.js';
+import form from './formSlice';
 
 export const store = configureStore({
   reducer: {
-    upload,
+    form,
     projects,
   },
 });
