@@ -1,35 +1,4 @@
-img{
-    width: 300px;
-}
-
-.image-window{
-    display: flex;
-    justify-content: center;
-}
-
-.image-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px
-}
-
-.accordion{
-    max-width: 950px;
-    margin: auto;
-}
-
-.upload-container{
-    max-width: 600px;
-    margin: auto
-}
-
-.addform-container{
-    width: 800px;
-    margin: auto;
-}
-
-input, select{
-    margin: 10px;
+body{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }

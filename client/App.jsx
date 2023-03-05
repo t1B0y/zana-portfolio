@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from "react";
-import EditProjects from "./components/EditProjects.jsx";
-import FilesUpload from "./components/FilesUpload.jsx";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProjects } from "./redux/reducer";
+import React, { useState, useEffect } from 'react';
+import FilesUpload from './components/admin/FilesUpload.jsx';
+import { useSelector, useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import AdminPage from './pages/AdminPage.jsx';
 
-const App = (props) => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.projects);
-  const [showUpload, setShowUpload] = useState(false);
-  useEffect(() => {
-    dispatch(fetchProjects());
-  }, []);
-
+const App = () => {
   return (
     <div>
-      <h1>my App</h1>
-      <button onClick={() => setShowUpload(true)}>upload images</button>
-      {!showUpload ? (
-        <EditProjects projects={state.projects} />
-      ) : (
-        <FilesUpload />
-      )}
+      <Routes>
+        <Route path="/admin/*" element={<AdminPage />} />
+        {/* <Route path="/" element={<AdminPage />} /> */}
+      </Routes>
     </div>
   );
 };
