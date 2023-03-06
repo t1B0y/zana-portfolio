@@ -6,8 +6,8 @@ const Projects = (props) => {
   const projects = useSelector((state) => state.projects.allProjects);
   return (
     <ProjectsContainer>
-      {projects.map((p) => (
-        <ProjectCard />
+      {projects.map((p, i) => (
+        <ProjectCard key={'card ' + i} />
       ))}
     </ProjectsContainer>
   );

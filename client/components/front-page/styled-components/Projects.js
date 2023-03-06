@@ -6,16 +6,20 @@ export const ProjectsContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  width: auto
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 `;
 
 export const Project = styled.div`
   height: 27vw;
-  width: 22vw;
+  min-width: 22vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,5 +32,15 @@ export const Project = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+  }
+`;
+
+export const HoverProject = styled.div`
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  overflow: hidden;
+  span {
+    display: block;
   }
 `;
