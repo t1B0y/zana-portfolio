@@ -26,8 +26,7 @@ projectRouter.delete('/:projectId', deleteProject, deletefiles, (req, res) => {
 });
 
 projectRouter.post('/', addProject, (req, res) => {
-  console.log('hit route');
-  res.status(200).json(res.locals.message);
+  res.status(200).json('project added successfully');
 });
 
 projectRouter.get('/', getAllProjets, function (req, res) {

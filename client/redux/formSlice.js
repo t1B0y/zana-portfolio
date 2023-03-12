@@ -14,10 +14,8 @@ const initialState = {
 export const submitProject = (form) => (dispatch, getState) => {
   const body = {
     ...form,
-    position: getState().projects.allProjects.length + 1,
   };
   delete body.message;
-  console.log(body);
   axios
     .post(`http://localhost:3000/project`, body)
     .then((res) => dispatch(formSlice.actions.setMessage(res.data)))

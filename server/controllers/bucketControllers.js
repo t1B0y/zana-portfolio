@@ -27,12 +27,14 @@ const bucketControllers = {};
 
 bucketControllers.uploadFile = async (req, res, next) => {
   const extension = /[^.]+$/.exec(req.files[0].originalname)[0];
+
   const params = {
     Bucket: bucketName,
-    Key: `${req.params.projectTitle}_${req.query.image}.${extension}`,
+    Key: `${req.params.projectTitle}/${req.body.imageName}.${extension}`,
     Body: req.files[0].buffer,
     ContentType: req.files[0].mimetype,
   };
+
   const command = new PutObjectCommand(params);
   GetObjectCommand;
 
@@ -40,7 +42,7 @@ bucketControllers.uploadFile = async (req, res, next) => {
     await s3.send(command);
     next();
   } catch (err) {
-    next({
+    return next({
       log: 'error in uploadFIle middleware',
       status: 500,
       message: { err: 'Error while uploading image to bucket' },
@@ -77,19 +79,19 @@ bucketControllers.deletefiles = async (req, res, next) => {
     Delete: {
       Objects: [
         {
-          Key: `${req.body.projectName}_imageFront.jpg`,
+          Key: `${req.body.projectName}/card.jpg`,
         },
         {
-          Key: `${req.body.projectName}_image1.jpg`,
+          Key: `${req.body.projectName}/image1.jpg`,
         },
         {
-          Key: `${req.body.projectName}_image2.jpg`,
+          Key: `${req.body.projectName}/image2.jpg`,
         },
         {
-          Key: `${req.body.projectName}_image3.jpg`,
+          Key: `${req.body.projectName}/image3.jpg`,
         },
         {
-          Key: `${req.body.projectName}_image4.jpg`,
+          Key: `${req.body.projectName}/image4.jpg`,
         },
       ],
     },

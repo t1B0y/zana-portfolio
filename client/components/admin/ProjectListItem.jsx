@@ -12,10 +12,6 @@ import { useDispatch } from 'react-redux';
 const ProjectListItem = ({ title, pos, databasePos, id }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = (e) => {
-    e.stopPropagation(e);
-  };
-
   const ref = useRef(null);
 
   const [{ handlerId }, drop] = useDrop({
@@ -30,6 +26,7 @@ const ProjectListItem = ({ title, pos, databasePos, id }) => {
       //console.log(databasePos, pos + 1, id);
       dispatch(reorderDataBase(databasePos, pos + 1, id));
     },
+
     hover(item, monitor) {
       if (!ref.current) {
         return;

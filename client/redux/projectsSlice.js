@@ -7,32 +7,6 @@ const initialState = {
   loading: true,
   currentProject: '',
   currentImage: '',
-  images: {
-    frontImage: 'https://portfolio-m.s3.amazonaws.com/default.png',
-    image1: 'https://portfolio-m.s3.amazonaws.com/default.png',
-    image2: 'https://portfolio-m.s3.amazonaws.com/default.png',
-    image3: 'https://portfolio-m.s3.amazonaws.com/default.png',
-    image4: 'https://portfolio-m.s3.amazonaws.com/default.png',
-  },
-};
-
-export const selectProject = (projectTitle) => (dispatch) => {
-  console.log(projectTitle);
-  axios
-    .get(`http://localhost:3000/image/${projectTitle}`)
-    .then((res) => res.data)
-    .then((data) => {
-      console.log({
-        images: data,
-        name: projectTitle,
-      });
-      dispatch(
-        projectsSlice.actions.setCurrentProject({
-          images: data,
-          name: projectTitle,
-        })
-      );
-    });
 };
 
 export const fetchProjects = () => (dispatch) => {
@@ -43,6 +17,17 @@ export const fetchProjects = () => (dispatch) => {
       dispatch(projectsSlice.actions.getAllProjects(data));
     });
 };
+
+export const uploadImage =
+  ({ imageName, projectTitle, id }) =>
+  (dispatch, getState) => {
+    axios
+      .get(`http://localhost:3000/image/${projectTitle}`, { imageName, id })
+      .then((res) => res.data)
+      .then((data) => {
+        dispatch(projectsSlice.actions.getAllProjects(data));
+      });
+  };
 
 export const getProject = (projectTitle) => (dispatch) => {
   axios
@@ -76,6 +61,22 @@ const projectsSlice = createSlice({
   initialState: initialState,
   reducers: {
     getAllProjects: (state, action) => {
+      action.payload = action.payload.map((p) => {
+        p.files = {
+          card: '',
+          image1: '',
+          image2: '',
+          image3: '',
+          image4: '',
+          video: '',
+          clip: '',
+        };
+        for (let key in p.files) {
+          p.files[key] = p[key];
+          delete p[key];
+        }
+        return p;
+      });
       state.allProjects = action.payload;
     },
     reorder: (state, action) => {
@@ -88,19 +89,14 @@ const projectsSlice = createSlice({
       state.projects[idx][key] = val;
     },
     selectImage: (state, action) => {
-      state.currentImage = state.images[action.payload];
+      state.currentImage = action.payload;
     },
     setCurrentProject: (state, action) => {
-      state.currentProject = action.payload.name;
-      const newImages = {};
-      for (let fileName of action.payload.images) {
-        const url = 'https://portfolio-m.s3.amazonaws.com/' + fileName;
-        const key = fileName.split('_')[1].split('.')[0];
-        state.images[key] = url;
-      }
+      state.currentProject = state.allProjects[action.payload];
     },
   },
 });
+
 export const {
   editProject,
   selectForUpload,
